@@ -7,11 +7,13 @@ Write-Host "============================= Edition - 20H2 =======================
 Write-Host "=========================================================================" -ForegroundColor Cyan
 
 Start-Sleep -Seconds 5
-
+$input = '1'
+<#
 Write-Host "1: Zero-Touch Win10 20H2 | English | Enterprise" -ForegroundColor Yellow
 Write-Host "2: Manual"-ForegroundColor Yellow
 Write-Host "3: Exit`n"-ForegroundColor Yellow
 $input = Read-Host "Please make a selection"
+#>
 
 Write-Host  -ForegroundColor Yellow "Loading OSDCloud..."
 
@@ -25,8 +27,8 @@ switch ($input)
     '3' { Exit }
 }
 
-Write-Host "Can I upload the AP hardware hash here?"
-pause
+#Write-Host "Can I upload the AP hardware hash here?"
+#pause
 
 #Restart from WinPE
 Write-Host  -ForegroundColor Cyan "Restarting in 20 seconds!"
