@@ -22,7 +22,7 @@ Import-Module OSD -Force
 
 switch ($input)
 {
-    '1' { Start-OSDCloud -OSLanguage en-us -OSBuild 20H2 -OSEdition Enterprise -ZTI } 
+    '1' { Start-OSDCloud -OSLanguage en-us -OSBuild 20H2 -OSEdition Enterprise -ZTI -Screenshot } 
     '2' { Start-OSDCloud	} 
     '3' { Exit }
 }
