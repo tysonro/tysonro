@@ -38,11 +38,10 @@ if ($Interactive) {
     }    
 }
 else {
-    Start-OSDCloud -OSLanguage en-us -OSBuild $OSBuild -OSEdition $OSEdition -ZTI -Screenshot
+    Start-OSDCloud -OSLanguage en-us -OSBuild $OSBuild -OSEdition $OSEdition -ZTI
 }
 
 # Restart from WinPE
 Write-Host  -ForegroundColor Cyan "Restarting in 10 seconds!"
 Start-Sleep -Seconds 10
-#wpeutil reboot
 Restart-Computer -Force
