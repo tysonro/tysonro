@@ -1,36 +1,48 @@
-# https://www.osdsune.com/home/blog/2021/osdcloud-zti-way
+<#
+OSDCloud ZTI script. This script is pulled from github using its URL when 
+OSDCloud starts within WinPE. This way the deployment is fully automated.
+
+Adapted from: https://www.osdsune.com/home/blog/2021/osdcloud-zti-way
+#>
+
+# Defaults
+$OSBuild = '21H2'
+$OSEdition = 'Professional'
+$Interactive = $false
+
 Write-Host "=========================================================================" -ForegroundColor Cyan
 Write-Host "===================== Cloud Image Deployment Script =====================" -ForegroundColor Cyan
 Write-Host "=========================================================================" -ForegroundColor Cyan
 Write-Host "========================== Starting Imaging ZTI =========================" -ForegroundColor Cyan
-Write-Host "============================= Edition - 20H2 ============================" -ForegroundColor Cyan
+Write-Host "========================== $OSBuild - $OSEdition ==========================" -ForegroundColor Cyan
 Write-Host "=========================================================================" -ForegroundColor Cyan
 
 Start-Sleep -Seconds 5
-$input = '1'
-<#
-Write-Host "1: Zero-Touch Win10 20H2 | English | Enterprise" -ForegroundColor Yellow
-Write-Host "2: Manual"-ForegroundColor Yellow
-Write-Host "3: Exit`n"-ForegroundColor Yellow
-$input = Read-Host "Please make a selection"
-#>
-
 Write-Host  -ForegroundColor Yellow "Loading OSDCloud..."
-
-#Install-Module OSD -Force
 Import-Module OSD -Force
 
-switch ($input)
-{
-    '1' { Start-OSDCloud -OSLanguage en-us -OSBuild 20H2 -OSEdition Enterprise -ZTI -Screenshot } 
-    '2' { Start-OSDCloud	} 
-    '3' { Exit }
+if ($Interactive) {
+    # Prompt for OS options
+    $input = '1'
+    Write-Host "1: Win10 20H2 | Professional" -ForegroundColor Yellow
+    Write-Host "2: Win10 21H2 | Professional" -ForegroundColor Yellow
+    Write-Host "3: Manual"-ForegroundColor Yellow
+    Write-Host "4: Exit`n"-ForegroundColor Yellow
+    $input = Read-Host "Please make a selection"
+
+    switch ($input) {
+        '1' {Start-OSDCloud -OSLanguage en-us -OSBuild 20H2 -OSEdition Professional -ZTI} 
+        '2' {Start-OSDCloud -OSLanguage en-us -OSBuild 21H2 -OSEdition Professional -ZTI} 
+        '3' {Start-OSDCloud} 
+        '4' {exit}
+    }    
+}
+else {
+    Start-OSDCloud -OSLanguage en-us -OSBuild $OSBuild -OSEdition $OSEdition -ZTI -Screenshot
 }
 
-#Write-Host "Can I upload the AP hardware hash here?"
-#pause
-
-#Restart from WinPE
-Write-Host  -ForegroundColor Cyan "Restarting in 20 seconds!"
-Start-Sleep -Seconds 20
-wpeutil reboot
+# Restart from WinPE
+Write-Host  -ForegroundColor Cyan "Restarting in 10 seconds!"
+Start-Sleep -Seconds 10
+#wpeutil reboot
+Restart-Computer -Force
