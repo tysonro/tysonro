@@ -7,14 +7,14 @@ Adapted from: https://www.osdsune.com/home/blog/2021/osdcloud-zti-way
 
 # Defaults
 $OSBuild = '21H2'
-$OSEdition = 'Professional'
+$OSEdition = 'Pro'
 $Interactive = $false
 
 Write-Host "=========================================================================" -ForegroundColor Cyan
 Write-Host "===================== Cloud Image Deployment Script =====================" -ForegroundColor Cyan
 Write-Host "=========================================================================" -ForegroundColor Cyan
 Write-Host "========================== Starting Imaging ZTI =========================" -ForegroundColor Cyan
-Write-Host "========================== $OSBuild - $OSEdition ==========================" -ForegroundColor Cyan
+Write-Host "============================== $OSBuild - $OSEdition ===============================" -ForegroundColor Cyan
 Write-Host "=========================================================================" -ForegroundColor Cyan
 
 Start-Sleep -Seconds 5
@@ -24,15 +24,15 @@ Import-Module OSD -Force
 if ($Interactive) {
     # Prompt for OS options
     $input = '1'
-    Write-Host "1: Win10 20H2 | Professional" -ForegroundColor Yellow
-    Write-Host "2: Win10 21H2 | Professional" -ForegroundColor Yellow
+    Write-Host "1: Win10 20H2 | Pro" -ForegroundColor Yellow
+    Write-Host "2: Win10 21H2 | Pro" -ForegroundColor Yellow
     Write-Host "3: Manual"-ForegroundColor Yellow
     Write-Host "4: Exit`n"-ForegroundColor Yellow
     $input = Read-Host "Please make a selection"
 
     switch ($input) {
-        '1' {Start-OSDCloud -OSLanguage en-us -OSBuild 20H2 -OSEdition Professional -ZTI} 
-        '2' {Start-OSDCloud -OSLanguage en-us -OSBuild 21H2 -OSEdition Professional -ZTI} 
+        '1' {Start-OSDCloud -OSLanguage en-us -OSBuild 20H2 -OSEdition Pro -ZTI} 
+        '2' {Start-OSDCloud -OSLanguage en-us -OSBuild 21H2 -OSEdition Pro -ZTI} 
         '3' {Start-OSDCloud} 
         '4' {exit}
     }    
