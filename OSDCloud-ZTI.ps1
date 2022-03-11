@@ -8,7 +8,7 @@ Adapted from: https://www.osdsune.com/home/blog/2021/osdcloud-zti-way
 # Defaults
 $OSBuild = '21H2'
 $OSEdition = 'Pro'
-$Interactive = $false
+$Interactive = $true
 
 Write-Host "=========================================================================" -ForegroundColor Cyan
 Write-Host "===================== Cloud Image Deployment Script =====================" -ForegroundColor Cyan
