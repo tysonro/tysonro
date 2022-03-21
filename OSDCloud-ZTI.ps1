@@ -8,7 +8,7 @@ Adapted from: https://www.osdsune.com/home/blog/2021/osdcloud-zti-way
 # Defaults
 $OSBuild = '21H2'
 $OSEdition = 'Pro'
-$Interactive = $true
+$Interactive = $false
 
 Write-Host "=========================================================================" -ForegroundColor Cyan
 Write-Host "===================== Cloud Image Deployment Script =====================" -ForegroundColor Cyan
@@ -31,6 +31,7 @@ if ($Interactive) {
     $input = Read-Host "Please make a selection"
 
     switch ($input) {
+        # Switch based on user input; decides what command to run
         '1' {Start-OSDCloud -OSLanguage en-us -OSBuild 20H2 -OSEdition Pro -ZTI} 
         '2' {Start-OSDCloud -OSLanguage en-us -OSBuild 21H2 -OSEdition Pro -ZTI} 
         '3' {Start-OSDCloud} 
@@ -38,6 +39,7 @@ if ($Interactive) {
     }    
 }
 else {
+    # non-interactive (ZTI) command
     Start-OSDCloud -OSLanguage en-us -OSBuild $OSBuild -OSEdition $OSEdition -ZTI
 }
 

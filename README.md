@@ -1,7 +1,3 @@
-- 👋 Hi, I’m @tysonro
+OSDCloud ZTI script.
 
-
-<!---
-tysonro/tysonro is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+This gets called when booting from a custom OSDCloud USB.
