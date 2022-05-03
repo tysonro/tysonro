@@ -8,7 +8,7 @@ Adapted from: https://www.osdsune.com/home/blog/2021/osdcloud-zti-way
 # Defaults
 $OSBuild = '21H2'
 $OSEdition = 'Pro'
-$Interactive = $true
+$Interactive = $false
 
 Write-Host "=========================================================================" -ForegroundColor Cyan
 Write-Host "===================== Cloud Image Deployment Script =====================" -ForegroundColor Cyan
@@ -46,4 +46,4 @@ else {
 # Restart from WinPE
 Write-Host  -ForegroundColor Cyan "Restarting in 10 seconds!"
 Start-Sleep -Seconds 10
-#Restart-Computer -Force
+Restart-Computer -Force
