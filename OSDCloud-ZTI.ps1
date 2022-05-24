@@ -26,16 +26,18 @@ if ($Interactive) {
     $input = '1'
     Write-Host "1: Win10 20H2 | Pro" -ForegroundColor Yellow
     Write-Host "2: Win10 21H2 | Pro" -ForegroundColor Yellow
-    Write-Host "3: Manual"-ForegroundColor Yellow
-    Write-Host "4: Exit`n"-ForegroundColor Yellow
+    Write-Host "3: Start-OSDCloud"-ForegroundColor Yellow
+    Write-Host "4: Start-OSDCloudGUI"-ForegroundColor Yellow
+    Write-Host "5: Exit`n"-ForegroundColor Yellow
     $input = Read-Host "Please make a selection"
 
     switch ($input) {
         # Switch based on user input; decides what command to run
         '1' {Start-OSDCloud -OSLanguage en-us -OSBuild 20H2 -OSEdition Pro -ZTI} 
         '2' {Start-OSDCloud -OSLanguage en-us -OSBuild 21H2 -OSEdition Pro -ZTI} 
-        '3' {Start-OSDCloud} 
-        '4' {exit}
+        '3' {Start-OSDCloud}
+        '4' {Start-OSDCloudGUI} 
+        '5' {exit}
     }    
 }
 else {
