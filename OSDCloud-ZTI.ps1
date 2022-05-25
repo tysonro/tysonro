@@ -3,6 +3,8 @@ OSDCloud ZTI script. This script is pulled from github using its URL when
 OSDCloud starts within WinPE. This way the deployment is fully automated.
 
 Adapted from: https://www.osdsune.com/home/blog/2021/osdcloud-zti-way
+
+Credit: https://www.osdcloud.com/
 #>
 
 # Defaults
