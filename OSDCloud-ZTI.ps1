@@ -10,12 +10,12 @@ Credit: https://www.osdcloud.com/
 # Defaults
 $OSBuild = '21H2'
 $OSEdition = 'Pro'
-$Interactive = $true
+$Interactive = $false
 
-#Change Display Resolution for Virtual Machine
 if ((Get-MyComputerModel) -match 'Virtual') {
+    # Change Display Resolution for Virtual Machine
     Write-Host -ForegroundColor Green "Setting Display Resolution to 1600x"
-    Set-DisRes 1600
+    Set-DisRes 1600   
 }
 
 Write-Host "=========================================================================" -ForegroundColor Cyan
@@ -31,7 +31,6 @@ Import-Module OSD -Force
 
 if ($Interactive) {
     # Prompt for OS options
-    $input = '1'
     Write-Host "1: Win10 20H2 | Pro" -ForegroundColor Yellow
     Write-Host "2: Win10 21H2 | Pro" -ForegroundColor Yellow
     Write-Host "3: Start-OSDCloud"-ForegroundColor Yellow
