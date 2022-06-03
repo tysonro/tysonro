@@ -12,12 +12,6 @@ $OSBuild = '21H2'
 $OSEdition = 'Pro'
 $Interactive = $false
 
-if ((Get-MyComputerModel) -match 'VMware7,1') {
-    # Change Display Resolution for Virtual Machine
-    Write-Host -ForegroundColor Green "Setting Display Resolution to 1600x"
-    Set-DisRes 1600   
-}
-
 Write-Host "=========================================================================" -ForegroundColor Cyan
 Write-Host "===================== Cloud Image Deployment Script =====================" -ForegroundColor Cyan
 Write-Host "=========================================================================" -ForegroundColor Cyan
