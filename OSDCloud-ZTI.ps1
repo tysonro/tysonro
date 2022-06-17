@@ -10,7 +10,7 @@ Credit: https://www.osdcloud.com/
 # Defaults
 $OSBuild = '21H2'
 $OSEdition = 'Pro'
-$Interactive = $false
+$Interactive = $true
 
 Write-Host "=========================================================================" -ForegroundColor Cyan
 Write-Host "===================== Cloud Image Deployment Script =====================" -ForegroundColor Cyan
