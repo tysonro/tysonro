@@ -8,15 +8,23 @@ Credit: https://www.osdcloud.com/
 #>
 
 # Defaults
+$OSVersion = 'Windows 10'
 $OSBuild = '21H2'
 $OSEdition = 'Pro'
 $Interactive = $true
+
+# If virtual machine, default to interactive
+# Intel desktop model: NUC11TNKi5
+# HP desktop model: 
+# VM model: 
+#if ((Get-MyComputerModel) -match '') {
+    
+#}
 
 Write-Host "=========================================================================" -ForegroundColor Cyan
 Write-Host "===================== Cloud Image Deployment Script =====================" -ForegroundColor Cyan
 Write-Host "=========================================================================" -ForegroundColor Cyan
 Write-Host "========================== Starting Imaging ZTI =========================" -ForegroundColor Cyan
-Write-Host "============================== $OSBuild - $OSEdition ===============================" -ForegroundColor Cyan
 Write-Host "=========================================================================" -ForegroundColor Cyan
 
 Start-Sleep -Seconds 5
@@ -25,17 +33,17 @@ Import-Module OSD -Force
 
 if ($Interactive) {
     # Prompt for OS options
-    Write-Host "1: Win10 20H2 | Pro" -ForegroundColor Yellow
-    Write-Host "2: Win10 21H2 | Pro" -ForegroundColor Yellow
+    Write-Host "1: Win10 20H2 Pro" -ForegroundColor Yellow
+    Write-Host "2: Win10 21H2 Pro" -ForegroundColor Yellow
     Write-Host "3: Start-OSDCloud"-ForegroundColor Yellow
     Write-Host "4: Start-OSDCloudGUI"-ForegroundColor Yellow
     Write-Host "5: Exit`n"-ForegroundColor Yellow
-    $input = Read-Host "Please make a selection"
+    $Selection = Read-Host "Please make a selection"
 
-    switch ($input) {
+    switch ($Selection) {
         # Switch based on user input; decides what command to run
-        '1' {Start-OSDCloud -OSLanguage en-us -OSBuild 20H2 -OSEdition Pro -ZTI} 
-        '2' {Start-OSDCloud -OSLanguage en-us -OSBuild 21H2 -OSEdition Pro -ZTI} 
+        '1' {Start-OSDCloud -OSVersion 'Windows 10' -OSBuild '20H2' -OSEdition 'Pro' -OSLanguage 'en-us' -ZTI} 
+        '2' {Start-OSDCloud -OSVersion 'Windows 10' -OSBuild '21H2' -OSEdition 'Pro' -OSLanguage 'en-us' -ZTI} 
         '3' {Start-OSDCloud}
         '4' {Start-OSDCloudGUI} 
         '5' {exit}
@@ -43,7 +51,7 @@ if ($Interactive) {
 }
 else {
     # non-interactive (ZTI) command
-    Start-OSDCloud -OSLanguage en-us -OSBuild $OSBuild -OSEdition $OSEdition -ZTI
+    Start-OSDCloud -OSVersion $OSVersion -OSBuild $OSBuild -OSEdition $OSEdition -OSLanguage 'en-us' -ZTI 
 }
 
 # Restart from WinPE
