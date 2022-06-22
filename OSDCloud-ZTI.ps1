@@ -42,8 +42,8 @@ if ($Interactive) {
 
     switch ($Selection) {
         # Switch based on user input; decides what command to run
-        '1' {Start-OSDCloud -OSVersion 'Windows 10' -OSBuild '20H2' -OSEdition 'Pro' -OSLanguage 'en-us' -ZTI} 
-        '2' {Start-OSDCloud -OSVersion 'Windows 10' -OSBuild '21H2' -OSEdition 'Pro' -OSLanguage 'en-us' -ZTI} 
+        '1' {Start-OSDCloud -OSVersion 'Windows 10' -OSBuild '20H2' -OSEdition 'Pro' -OSLanguage 'en-us' -Firmware -ZTI} 
+        '2' {Start-OSDCloud -OSVersion 'Windows 10' -OSBuild '21H2' -OSEdition 'Pro' -OSLanguage 'en-us' -Firmware -ZTI} 
         '3' {Start-OSDCloud}
         '4' {Start-OSDCloudGUI} 
         '5' {exit}
@@ -51,7 +51,7 @@ if ($Interactive) {
 }
 else {
     # non-interactive (ZTI) command
-    Start-OSDCloud -OSVersion $OSVersion -OSBuild $OSBuild -OSEdition $OSEdition -OSLanguage 'en-us' -ZTI -Firmware
+    Start-OSDCloud -OSVersion $OSVersion -OSBuild $OSBuild -OSEdition $OSEdition -OSLanguage 'en-us' -Firmware -ZTI
 }
 
 # Restart from WinPE
