@@ -51,7 +51,7 @@ if ($Interactive) {
 }
 else {
     # non-interactive (ZTI) command
-    Start-OSDCloud -OSVersion $OSVersion -OSBuild $OSBuild -OSEdition $OSEdition -OSLanguage 'en-us' -ZTI 
+    Start-OSDCloud -OSVersion $OSVersion -OSBuild $OSBuild -OSEdition $OSEdition -OSLanguage 'en-us' -ZTI -Firmware
 }
 
 # Restart from WinPE
