@@ -11,7 +11,7 @@ Credit: https://www.osdcloud.com/
 $OSVersion = 'Windows 10'
 $OSBuild = '21H2'
 $OSEdition = 'Pro'
-$Interactive = $false
+$Interactive = $true
 
 # If virtual machine, default to interactive
 # Intel desktop model: NUC11TNKi5
