@@ -8,18 +8,21 @@ Credit: https://www.osdcloud.com/
 #>
 
 # Defaults
-$OSVersion = 'Windows 10'
-$OSBuild = '21H2'
-$OSEdition = 'Pro'
 $Interactive = $true
+$DefaultOSName = 'Windows 10 21H2 x64'
+$Defaults = @{
+    OSEdition = 'Pro'
+    OSLicense = 'Volume'
+    OSLanguage = 'en-us'
+    SkipAutopilot = $true
+    Firmware = $true
+    ZTI = $true    
+}
 
-# If virtual machine, default to interactive
-# Intel desktop model: NUC11TNKi5
-# HP desktop model: 
-# VM model: 
-#if ((Get-MyComputerModel) -match '') {
-    
-#}
+# If running Hyper-V vm, change display resolution 
+if ((Get-MyComputerModel) -match 'Virtual Machine') {
+    Set-DisRes 1920
+}
 
 Write-Host "=========================================================================" -ForegroundColor Cyan
 Write-Host "===================== Cloud Image Deployment Script =====================" -ForegroundColor Cyan
@@ -33,25 +36,27 @@ Import-Module OSD -Force
 
 if ($Interactive) {
     # Prompt for OS options
-    Write-Host "1: Win10 20H2 Pro" -ForegroundColor Yellow
-    Write-Host "2: Win10 21H2 Pro" -ForegroundColor Yellow
-    Write-Host "3: Start-OSDCloud"-ForegroundColor Yellow
-    Write-Host "4: Start-OSDCloudGUI"-ForegroundColor Yellow
-    Write-Host "5: Exit`n"-ForegroundColor Yellow
+    Write-Host "1: Windows 10 21H2 x64" -ForegroundColor Yellow
+    Write-Host "2: Windows 11 22H1 x64" -ForegroundColor Yellow
+    Write-Host "3: Start-OSDCloudGUI" -ForegroundColor Yellow
+    Write-Host "4: Exit`n"-ForegroundColor Yellow
+
     $Selection = Read-Host "Please make a selection"
 
     switch ($Selection) {
         # Switch based on user input; decides what command to run
-        '1' {Start-OSDCloud -OSVersion 'Windows 10' -OSBuild '20H2' -OSEdition 'Pro' -OSLanguage 'en-us' -Firmware -ZTI} 
-        '2' {Start-OSDCloud -OSVersion 'Windows 10' -OSBuild '21H2' -OSEdition 'Pro' -OSLanguage 'en-us' -Firmware -ZTI} 
-        '3' {Start-OSDCloud}
-        '4' {Start-OSDCloudGUI} 
-        '5' {exit}
+        '1' {Start-OSDCloud -OSName $DefaultOSName @Defaults} 
+        '2' {Start-OSDCloud -OSName 'Windows 11 22H1 x64' @Defaults}#-OSEdition 'Pro' -OSLanguage 'en-us' -Firmware -ZTI} 
+        '3' {Start-OSDCloudGUI} 
+        '4' {exit}
+        # "-OSVERSION" is legacy now, update to use "OSName = Windows 10 21H2 x64"
+        # Start-OSDCloud -Manufacturer 'Lenovo' -Product '20TQ' -Firmware -Restart -SkipAutopilot -SkipODT -OSName 'Windows 10 21H2 x64' -OSEdition 'Pro' -OSLanguage 'en-us' -OSLicense 'Volume'
     }    
 }
 else {
     # non-interactive (ZTI) command
-    Start-OSDCloud -OSVersion $OSVersion -OSBuild $OSBuild -OSEdition $OSEdition -OSLanguage 'en-us' -Firmware -ZTI
+    Start-OSDCloud -OSName $DefaultOSName @Defaults
+    #Start-OSDCloud -OSVersion $OSVersion -OSBuild $OSBuild -OSEdition $OSEdition -OSLanguage 'en-us' -Firmware -ZTI
 }
 
 # Restart from WinPE
