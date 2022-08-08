@@ -8,7 +8,7 @@ Credit: https://www.osdcloud.com/
 #>
 
 # Defaults
-$Interactive = $true
+$Interactive = $false
 $DefaultOSName = 'Windows 10 21H2 x64'
 $Defaults = @{
     OSEdition = 'Pro'
@@ -19,9 +19,13 @@ $Defaults = @{
     ZTI = $true    
 }
 
-# If running Hyper-V vm, change display resolution 
+# If running Hyper-V vm, change display resolution and enter interactive mode
 if ((Get-MyComputerModel) -match 'Virtual') {
+    # Set display resolution (hyper-v only)
     Set-DisRes 1920
+
+    # VM's are for testing, force interactive mode to $true
+    $Interactive = $true  
 }
 
 Write-Host "=========================================================================" -ForegroundColor Cyan
@@ -46,17 +50,14 @@ if ($Interactive) {
     switch ($Selection) {
         # Switch based on user input; decides what command to run
         '1' {Start-OSDCloud -OSName $DefaultOSName @Defaults} 
-        '2' {Start-OSDCloud -OSName 'Windows 11 21H2 x64' @Defaults}#-OSEdition 'Pro' -OSLanguage 'en-us' -Firmware -ZTI} 
+        '2' {Start-OSDCloud -OSName 'Windows 11 21H2 x64' @Defaults}
         '3' {Start-OSDCloudGUI} 
         '4' {exit}
-        # "-OSVERSION" is legacy now, update to use "OSName = Windows 10 21H2 x64"
-        # Start-OSDCloud -Manufacturer 'Lenovo' -Product '20TQ' -Firmware -Restart -SkipAutopilot -SkipODT -OSName 'Windows 10 21H2 x64' -OSEdition 'Pro' -OSLanguage 'en-us' -OSLicense 'Volume'
     }    
 }
 else {
     # non-interactive (ZTI) command
     Start-OSDCloud -OSName $DefaultOSName @Defaults
-    #Start-OSDCloud -OSVersion $OSVersion -OSBuild $OSBuild -OSEdition $OSEdition -OSLanguage 'en-us' -Firmware -ZTI
 }
 
 # Restart from WinPE
