@@ -1,0 +1,8 @@
+Some ideas: 
+
+https://github.com/mengdahuang/OSD/blob/main/Start-OSDCloud.ps1
+
+https://github.com/jgdeng/OSDCloud/blob/main/OSDcloud.ps1
+
+
+

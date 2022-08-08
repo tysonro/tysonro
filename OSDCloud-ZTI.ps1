@@ -20,7 +20,7 @@ $Defaults = @{
 }
 
 # If running Hyper-V vm, change display resolution 
-if ((Get-MyComputerModel) -match 'Virtual Machine') {
+if ((Get-MyComputerModel) -match 'Virtual') {
     Set-DisRes 1920
 }
 
@@ -37,7 +37,7 @@ Import-Module OSD -Force
 if ($Interactive) {
     # Prompt for OS options
     Write-Host "1: Windows 10 21H2 x64" -ForegroundColor Yellow
-    Write-Host "2: Windows 11 22H1 x64" -ForegroundColor Yellow
+    Write-Host "2: Windows 11 21H2 x64" -ForegroundColor Yellow
     Write-Host "3: Start-OSDCloudGUI" -ForegroundColor Yellow
     Write-Host "4: Exit`n"-ForegroundColor Yellow
 
