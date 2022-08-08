@@ -19,7 +19,7 @@ $Defaults = @{
     ZTI = $true    
 }
 
-# If running Hyper-V vm, change display resolution and enter interactive mode
+# VIRTUAL MACHINES ONLY
 if ((Get-MyComputerModel) -match 'Virtual') {
     # Set display resolution (hyper-v only)
     Set-DisRes 1920
