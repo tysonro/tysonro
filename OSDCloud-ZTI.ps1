@@ -60,7 +60,25 @@ else {
     Start-OSDCloud -OSName $DefaultOSName @Defaults
 }
 
+### P15v Gen 1 (Type: 20QT) Ethernet Driver Workaround
+# For some reason, OSDCloud has trouble installing the ethernet adapter driver for this particular model from Lenvovo's driver catalog
+# However, manually installing them with pnputil.exe at the OOBE post imaging works.
+# This workaround will copy the P15v ethernet driver and script wrapper to install the drivers to the empty partition on the USB drive
+###
+if ((Get-MyComputerModel) -eq 'ThinkPad P15v Gen 1') {
+    Write-Warning "Detected a P15v...You will need to manually install the ethernet drivers:"
+    Write-Host "`nInstructions: " -ForegroundColor Cyan
+    Write-Host "1. After the reboot at the OOBE, Open cmd: (fn)Shift + F10" -ForegroundColor Cyan
+    Write-Host "2. Type: powershell" -ForegroundColor Cyan
+    Write-Host "3. Type: Set-ExecutionPolicy RemoteSigned" -ForegroundColor Cyan
+    Write-Host "4. Type: 'ls d:' or 'ls e:' to determine which drive has the drivers and scripts (It should only return a folder and a .ps1 script)." -ForegroundColor Cyan
+    Write-Host "5. Type: D:\Install-P15vEthernetDriver.ps1" -ForegroundColor Cyan
+    Write-Host "6. Type: Get-NetAdapter to confirm" -ForegroundColor Cyan
+    pause
+    ""
+}
+
 # Restart from WinPE
-Write-Host  -ForegroundColor Cyan "Restarting in 10 seconds!"
+Write-Host "Restarting in 10 seconds!" -ForegroundColor Green
 Start-Sleep -Seconds 10
 Restart-Computer -Force
