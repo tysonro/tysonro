@@ -66,14 +66,13 @@ else {
 # This workaround will copy the P15v ethernet driver and script wrapper to install the drivers to the empty partition on the USB drive
 ###
 if ((Get-MyComputerModel) -eq 'ThinkPad P15v Gen 1') {
-    Write-Warning "Detected a P15v...You will need to manually install the ethernet drivers:"
+    Write-Warning "`nThinkPad P15v Gen 1 Detected...You will need to manually install the ethernet drivers:"
     Write-Host "`nInstructions: " -ForegroundColor Cyan
     Write-Host "1. After the reboot at the OOBE, Open cmd: (fn)Shift + F10" -ForegroundColor Cyan
     Write-Host "2. Type: powershell" -ForegroundColor Cyan
     Write-Host "3. Type: Set-ExecutionPolicy RemoteSigned" -ForegroundColor Cyan
-    Write-Host "4. Type: 'ls d:' or 'ls e:' to determine which drive has the drivers and scripts (It should only return a folder and a .ps1 script)." -ForegroundColor Cyan
-    Write-Host "5. Type: D:\Install-P15vEthernetDriver.ps1" -ForegroundColor Cyan
-    Write-Host "6. Type: Get-NetAdapter to confirm" -ForegroundColor Cyan
+    Write-Host "4. Type: 'ls d:' or 'ls e:' to determine which drive letter to use (It should only return a folder and a .ps1 script)." -ForegroundColor Cyan
+    Write-Host "5. Type: <driveLetter>:\Install-P15vEthernetDriver.ps1" -ForegroundColor Cyan
     pause
     ""
 }
