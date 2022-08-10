@@ -73,6 +73,7 @@ if ((Get-MyComputerModel) -eq 'ThinkPad P15v Gen 1') {
     Write-Host "3. Type: Set-ExecutionPolicy RemoteSigned" -ForegroundColor Cyan
     Write-Host "4. Type: 'ls d:' or 'ls e:' to determine which drive letter to use (It should only return a folder and a .ps1 script)." -ForegroundColor Cyan
     Write-Host "5. Type: <driveLetter>:\Complete-P15vSetup.ps1" -ForegroundColor Cyan
+    Write-Host "NOTE: This script will also upload the hardware hash to MEM too!"
     pause
     ""
 }
