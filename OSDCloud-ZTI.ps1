@@ -20,10 +20,12 @@ $Defaults = @{
 }
 
 # VIRTUAL MACHINES ONLY
-if ((Get-MyComputerModel) -match 'Virtual') {
-    # Set display resolution (hyper-v only)
-    Set-DisRes 1920
-
+$Model = Get-MyComputerModel
+if ($Model -match 'virtual' -or $Model -match 'vmware') {
+    if ($Model -match 'virtual') {
+        # Set display resolution (hyper-v only)
+        Set-DisRes 1920
+    }    
     # VM's are for testing, force interactive mode to $true
     $Interactive = $true  
 }
