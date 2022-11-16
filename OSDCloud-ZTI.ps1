@@ -67,18 +67,18 @@ else {
 # However, manually installing them with pnputil.exe at the OOBE post imaging works.
 # This workaround will copy the P15v ethernet driver and script wrapper to install the drivers to the empty partition on the USB drive
 ###
-if ((Get-MyComputerModel) -eq 'ThinkPad P15v Gen 1') {
-    Write-Warning "`nThinkPad P15v Gen 1 Detected...You will need to initiate a script to install extra drivers and flash the BIOS:"
-    Write-Host "`nInstructions: " -ForegroundColor Cyan
-    Write-Host "1. After the reboot at the OOBE, Open cmd: (fn)Shift + F10" -ForegroundColor Cyan
-    Write-Host "2. Type: powershell" -ForegroundColor Cyan
-    Write-Host "3. Type: Set-ExecutionPolicy RemoteSigned" -ForegroundColor Cyan
-    Write-Host "4. Type: 'ls d:' or 'ls e:' to determine which drive letter to use (It should only return a folder and a .ps1 script)." -ForegroundColor Cyan
-    Write-Host "5. Type: <driveLetter>:\Complete-P15vSetup.ps1" -ForegroundColor Cyan
-    Write-Host "NOTE: This script will also upload the hardware hash to MEM too!"
-    pause
-    ""
-}
+#if ((Get-MyComputerModel) -eq 'ThinkPad P15v Gen 1') {
+#    Write-Warning "`nThinkPad P15v Gen 1 Detected...You will need to initiate a script to install extra drivers and flash the BIOS:"
+#    Write-Host "`nInstructions: " -ForegroundColor Cyan
+#    Write-Host "1. After the reboot at the OOBE, Open cmd: (fn)Shift + F10" -ForegroundColor Cyan
+#    Write-Host "2. Type: powershell" -ForegroundColor Cyan
+#    Write-Host "3. Type: Set-ExecutionPolicy RemoteSigned" -ForegroundColor Cyan
+#    Write-Host "4. Type: 'ls d:' or 'ls e:' to determine which drive letter to use (It should only return a folder and a .ps1 script)." -ForegroundColor Cyan
+#    Write-Host "5. Type: <driveLetter>:\Complete-P15vSetup.ps1" -ForegroundColor Cyan
+#    Write-Host "NOTE: This script will also upload the hardware hash to MEM too!"
+#    pause
+#    ""
+#} ## Commented out 11/16/2022 - TRO - I just imaged a P15v 
 
 # Restart from WinPE
 Write-Host "Restarting in 10 seconds!" -ForegroundColor Green
