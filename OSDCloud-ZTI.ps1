@@ -9,7 +9,7 @@ Credit: https://www.osdcloud.com/
 
 # Defaults
 $Interactive = $false
-$DefaultOSName = 'Windows 10 21H2 x64'
+$DefaultOSName = 'Windows 10 22H2 x64'
 $Defaults = @{
     OSEdition = 'Pro'
     OSLicense = 'Volume'
