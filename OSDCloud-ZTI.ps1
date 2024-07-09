@@ -42,8 +42,8 @@ Import-Module OSD -Force
 
 if ($Interactive) {
     # Prompt for OS options
-    Write-Host "1: Windows 10 21H2 x64" -ForegroundColor Yellow
-    Write-Host "2: Windows 11 21H2 x64" -ForegroundColor Yellow
+    Write-Host "1: Windows 10 22H2 x64" -ForegroundColor Yellow
+    Write-Host "2: Windows 11 22H2 x64" -ForegroundColor Yellow
     Write-Host "3: Start-OSDCloudGUI" -ForegroundColor Yellow
     Write-Host "4: Exit`n"-ForegroundColor Yellow
 
@@ -52,7 +52,7 @@ if ($Interactive) {
     switch ($Selection) {
         # Switch based on user input; decides what command to run
         '1' {Start-OSDCloud -OSName $DefaultOSName @Defaults} 
-        '2' {Start-OSDCloud -OSName 'Windows 11 21H2 x64' @Defaults}
+        '2' {Start-OSDCloud -OSName 'Windows 11 22H2 x64' @Defaults}
         '3' {Start-OSDCloudGUI} 
         '4' {exit}
     }    
