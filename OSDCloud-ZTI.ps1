@@ -52,7 +52,7 @@ if ($Interactive) {
     switch ($Selection) {
         # Switch based on user input; decides what command to run
         '1' {Start-OSDCloud -OSName $DefaultOSName @Defaults} 
-        '2' {Start-OSDCloud -OSName 'Windows 11 22H2 x64' @Defaults}
+        '2' {Start-OSDCloud -OSName 'Windows 11 24H2 x64' @Defaults}
         '3' {Start-OSDCloudGUI} 
         '4' {exit}
     }    
