@@ -8,7 +8,7 @@ Credit: https://www.osdcloud.com/
 #>
 
 # Defaults
-$Interactive = $false
+$Interactive = $true
 $DefaultOSName = 'Windows 10 22H2 x64'
 $Defaults = @{
     OSEdition = 'Pro'
@@ -43,7 +43,7 @@ Import-Module OSD -Force
 if ($Interactive) {
     # Prompt for OS options
     Write-Host "1: Windows 10 22H2 x64" -ForegroundColor Yellow
-    Write-Host "2: Windows 11 22H2 x64" -ForegroundColor Yellow
+    Write-Host "2: Windows 11 24H2 x64" -ForegroundColor Yellow
     Write-Host "3: Start-OSDCloudGUI" -ForegroundColor Yellow
     Write-Host "4: Exit`n"-ForegroundColor Yellow
 
